@@ -1,0 +1,22 @@
+cot_php:
+    build: ./php-fpm
+    volumes:
+        - ../:/var/www
+    links:
+        - cot_db
+    working_dir: /var/www
+cot_db:
+    image: mysql:5.7
+    ports:
+        - 3307:3306
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: cot
+cot_nginx:
+    build: ./nginx
+    ports:
+        - 8000:80
+    links:
+        - cot_php
+    volumes_from:
+        - cot_php

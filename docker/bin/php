@@ -1,0 +1,2 @@
+
+docker-compose exec st_php bash
