@@ -4,11 +4,17 @@ cot_php:
         - ../:/var/www
     links:
         - cot_db
+        - cot_test_db
     working_dir: /var/www
 cot_db:
     image: mysql:5.7
     ports:
         - 3307:3306
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: cot
+cot_test_db:
+    image: mysql:5.7
     environment:
         MYSQL_ROOT_PASSWORD: root
         MYSQL_DATABASE: cot
