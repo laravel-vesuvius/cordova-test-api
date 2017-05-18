@@ -21,4 +21,12 @@ class User extends Model
     protected $fillable = [
         'token'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function pins()
+    {
+        return $this->hasMany(Pin::class);
+    }
 }

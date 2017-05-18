@@ -13,6 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return \TokenAuth::getUser();
-});
+Route::get('/pins', 'PinController@index');
+Route::post('/pins', 'PinController@create');
