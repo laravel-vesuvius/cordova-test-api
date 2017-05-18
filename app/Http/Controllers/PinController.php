@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Requests\CreatePin;
-use App\Pin;
+use App\Services\PinManager;
 
 /**
  * Class PinController
@@ -23,12 +23,13 @@ class PinController extends Controller
 
     /**
      * @param CreatePin $request
+     * @param PinManager $pinManager
      *
-     * @return mixed
+     * @return array
      */
-    public function create(CreatePin $request)
+    public function create(CreatePin $request, PinManager $pinManager)
     {
-        $pin = \TokenAuth::getUser()->pins()->save(new Pin($request->all()));
+        $pin = $pinManager->createPinForUser(\TokenAuth::getUser(), $request->all());
 
         return compact('pin');
     }
