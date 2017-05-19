@@ -24,7 +24,7 @@ class ApiAuth
     public function handle($request, Closure $next, $guard = null)
     {
         $response = $next($request);
-        $response->headers->set('auth_token', TokenAuth::getUser()->token);
+        $response->headers->set('auth-token', TokenAuth::getUser()->token);
 
         return $response;
     }

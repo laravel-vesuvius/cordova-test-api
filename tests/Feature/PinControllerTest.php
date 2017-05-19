@@ -20,7 +20,7 @@ class PinControllerTest extends TestCase
         $pin = factory(Pin::class)->make();
         $user->pins()->save($pin);
 
-        $response = $this->get('/api/pins', ['auth_token' => $user->token]);
+        $response = $this->get('/api/pins', ['auth-token' => $user->token]);
 
         $response->assertJson([
             'pins' => [
@@ -43,8 +43,8 @@ class PinControllerTest extends TestCase
 
         $response = $this->post(
             '/api/pins',
-            ['lat' => $pin->lat, 'lng' => $pin->lng],
-            ['auth_token' => $user->token]
+            ['pin' => ['lat' => $pin->lat, 'lng' => $pin->lng]],
+            ['auth-token' => $user->token]
         );
 
         $this->assertDatabaseHas('pins', ['lat' => $pin->lat, 'lng' => $pin->lng, 'user_id' => $user->id]);

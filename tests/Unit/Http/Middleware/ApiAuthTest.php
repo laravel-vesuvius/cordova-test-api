@@ -27,6 +27,6 @@ class ApiAuthTest extends TestCase
             return new Response();
         });
 
-        $this->assertEquals($user->token, $response->headers->get('auth_token'));
+        $this->assertEquals($user->token, $response->headers->get('auth-token'));
     }
 }

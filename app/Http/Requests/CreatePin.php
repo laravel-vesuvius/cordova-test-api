@@ -30,8 +30,8 @@ class CreatePin extends FormRequest
     public function rules()
     {
         return [
-            'lat' => 'required|numeric',
-            'lng' => 'required|numeric'
+            'pin.lat' => 'required|numeric',
+            'pin.lng' => 'required|numeric'
         ];
     }
 }

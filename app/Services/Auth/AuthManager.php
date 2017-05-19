@@ -42,7 +42,7 @@ class AuthManager
         }
 
         if ($token = $this->tokenStorage->getToken()) {
-            return User::whereToken($token)->first();
+            return $this->user = User::whereToken($token)->first();
         }
 
         $token = $this->tokenStorage->generateToken();

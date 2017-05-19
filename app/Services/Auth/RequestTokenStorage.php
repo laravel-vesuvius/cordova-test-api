@@ -15,7 +15,7 @@ class RequestTokenStorage implements TokenStorageInterface
     /**
      * @var string
      */
-    protected $tokenKey = 'auth_token';
+    protected $tokenKey = 'auth-token';
 
     /**
      * @var Request

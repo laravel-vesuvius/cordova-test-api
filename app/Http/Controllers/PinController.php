@@ -29,7 +29,7 @@ class PinController extends Controller
      */
     public function create(CreatePin $request, PinManager $pinManager)
     {
-        $pin = $pinManager->createPinForUser(\TokenAuth::getUser(), $request->all());
+        $pin = $pinManager->createPinForUser(\TokenAuth::getUser(), $request->get('pin'));
 
         return compact('pin');
     }
