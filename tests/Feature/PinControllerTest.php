@@ -26,7 +26,10 @@ class PinControllerTest extends TestCase
             'pins' => [
                 [
                     'lat' => $pin->lat,
-                    'lng' => $pin->lng
+                    'lng' => $pin->lng,
+                    'country' => $pin->country,
+                    'city' => $pin->city,
+                    'formatted_address' => $pin->formatted_address,
                 ]
             ]
         ]);
@@ -41,19 +44,24 @@ class PinControllerTest extends TestCase
 
         $pin = factory(Pin::class)->make();
 
+        $data = [
+            'lat' => $pin->lat,
+            'lng' => $pin->lng,
+            'country' => $pin->country,
+            'city' => $pin->city,
+            'formatted_address' => $pin->formatted_address,
+        ];
+
         $response = $this->post(
             '/api/pins',
-            ['pin' => ['lat' => $pin->lat, 'lng' => $pin->lng]],
+            ['pin' => $data],
             ['auth-token' => $user->token]
         );
 
         $this->assertDatabaseHas('pins', ['lat' => $pin->lat, 'lng' => $pin->lng, 'user_id' => $user->id]);
 
         $response->assertJson([
-            'pin' => [
-                'lat' => $pin->lat,
-                'lng' => $pin->lng
-            ]
+            'pin' => $data
         ]);
     }
 }

@@ -12,6 +12,9 @@ class Pin extends Model
     protected $fillable = [
         'lat',
         'lng',
+        'city',
+        'country',
+        'formatted_address',
         'user_id'
     ];
 

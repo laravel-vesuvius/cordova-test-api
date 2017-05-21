@@ -21,6 +21,9 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Pin::class, function (Faker\Generator $faker) {
     return [
         'lat' => $faker->latitude,
-        'lng' => $faker->longitude
+        'lng' => $faker->longitude,
+        'country' => $faker->country,
+        'city' => $faker->city,
+        'formatted_address' => $faker->streetAddress
     ];
 });
